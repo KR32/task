@@ -21,7 +21,7 @@ WSL@usr:~/task cd frontend
 
 WSL@usr:~/task/frontend npm i
 
-WSL@usr:~/task/frontend nom run serve
+WSL@usr:~/task/frontend npm run serve
 ```
 
 NOTE: frontend should run on port 8080. or else we need to config the port in cors middleware in `backend.app.main.py`
