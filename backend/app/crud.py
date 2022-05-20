@@ -17,6 +17,7 @@ def get_user_by_email(
 
 def get_users(
     db_session: Session,
+    user_id: Optional[int] = None,
     name: Optional[str] = None,
     email: Optional[str] = None,
     skip: int = None,
@@ -26,6 +27,9 @@ def get_users(
 ) -> List[UserResponse]:
 
     query = db_session.query(User)
+
+    if user_id:
+        query = query.filter(User.user_id == user_id)
 
     if name:
         query = query.filter(User.name.contains(name))

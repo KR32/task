@@ -11,6 +11,7 @@ router = APIRouter()
 
 @router.get('/search', response_model=Union[List[UserResponse], int])
 def get_all_users(
+    user_id: Optional[int] = None,
     name: Optional[str] = None,
     email: Optional[str] = None,
     skip: int = 0,
@@ -23,6 +24,7 @@ def get_all_users(
     Get all users from the database with optional filters and pagination
 
     allowed query params:
+    - user_id (int) 
     - name (str) case sensitive
     - email (str) case insensitive
     - skip (default: 0)
@@ -34,6 +36,7 @@ def get_all_users(
 
     return get_users(
         db_session=db_session,
+        user_id=user_id,
         name=name,
         email=email,
         skip=skip,

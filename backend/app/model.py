@@ -1,12 +1,10 @@
 from typing import Optional
 from fastapi.exceptions import HTTPException
-from pydantic import BaseModel, constr, validator
-
-EMAIL_REGEX = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+from pydantic import BaseModel, constr, validator, EmailStr
 
 class UserResponseBase(BaseModel):
     name: constr(strip_whitespace=True)
-    email: constr(strip_whitespace=True, regex=EMAIL_REGEX)
+    email: EmailStr
 
     class Config:
         orm_mode = True
@@ -27,4 +25,4 @@ class UserResponse(UserResponseBase):
 
 class UserResponseUpdate(BaseModel):
     name: Optional[constr(strip_whitespace=True)] = None
-    email: Optional[str] = None
+    email: Optional[EmailStr] = None

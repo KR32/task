@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request, Response
 from app.database import Session, engine
 from app.endpoint import router as user_router
 from app.database import Base
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -9,6 +10,18 @@ Base.metadata.create_all(bind=engine)
 
 # TODO: move this into a separate file if more routers are added
 app.include_router(user_router, prefix="/v1")
+
+origins = [
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.middleware("http")
 async def db_session_middleware(request: Request, call_next):
