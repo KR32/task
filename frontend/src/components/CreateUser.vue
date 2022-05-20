@@ -58,7 +58,7 @@ export default {
     submit() {
       axios({
         method: "post",
-        url: "http://127.0.0.1:8000/v1/create",
+        url: "http://localhost/api/v1/create",
         data: this.user_data,
       })
         .then((response) => {
