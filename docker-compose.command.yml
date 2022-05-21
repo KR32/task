@@ -13,4 +13,4 @@ services:
     command: postgres -c 'shared_buffers=400MB' -c 'max_connections=200'
 
   backend:
-    command: /start-reload.sh
+    command: ${STARTUP_COMMAND}

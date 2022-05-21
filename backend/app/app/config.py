@@ -1,4 +1,6 @@
 import os
+SERVER_TYPE = os.getenv("SERVER_TYPE", "DEV")
+STARTUP_COMMAND = os.getenv("STARTUP_COMMAND", "/start-reload.sh")
 
 BACKEND_CORS_ORIGINS = os.getenv(
     "BACKEND_CORS_ORIGINS"
