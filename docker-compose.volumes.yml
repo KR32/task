@@ -1,0 +1,22 @@
+version: '3.6'
+services:
+  proxy:
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+      
+  backend:
+    volumes:
+      - ./backend/app:/app
+
+  db:
+    volumes:
+      - ./backend/app/scripts/sql:/sql
+
+  frontend:
+    volumes:
+      - ./frontend/src:/frontend/src
+      - nodemodules:/frontend/src/node_modules
+
+volumes:
+  nodemodules:

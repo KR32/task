@@ -1,0 +1,16 @@
+version: '3.6'
+services:
+  proxy:
+    command:
+      - "--providers.docker.endpoint=unix:///var/run/docker.sock" # connect docker to the host
+      - "--providers.docker.exposedbydefault=false" # privent expose all containers by default
+      - "--entrypoints.web.address=:80" # expose the web server on port 80
+      - "--log.level=DEBUG" # set the log level to DEBUG
+      - "--accesslog=true"
+      - "--api=true"
+      - "--api.dashboard=true"
+  db:
+    command: postgres -c 'shared_buffers=400MB' -c 'max_connections=200'
+
+  backend:
+    command: /start-reload.sh

@@ -1,0 +1,16 @@
+version: '3.6'
+services:
+
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: backend.dockerfile
+  
+  frontend:
+    stdin_open: true
+    tty: true
+    build: 
+      context: ./frontend
+      dockerfile: frontend.dockerfile
+      # args: 
+      #   FRONTEND_ENV: local
