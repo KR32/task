@@ -2,7 +2,6 @@
 
 commands to bring up the server
 
-    
     docker-compose up -d
     
 
