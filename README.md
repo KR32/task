@@ -1,27 +1,21 @@
 # task
 
-to bring up backend server
+commands to bring up the server
 
-```
-WSL@usr:~/task python -m venv .env-test
+    ```
+        docker-compose up -d
+    ```
 
-WSL@usr:~/task source .env-test/bin/activate
+we have below containers
 
-(env-test)
-WSL@usr:~/task (master) $ cd backend
+    ```
+        |- backend
+        |- db
+        |- frontend
+        |- proxy
+    ```
 
-(env-test) 
-WSL@usr:~/task/backend (master) $ uvicorn app.main:app --reload --port 8000
-
-```
-
-for frontend
-```
-WSL@usr:~/task cd frontend
-
-WSL@usr:~/task/frontend npm i
-
-WSL@usr:~/task/frontend npm run serve
-```
-
-NOTE: frontend should run on port 8080. or else we need to config the port in cors middleware in `backend.app.main.py`
+to get specific container logs
+    ```
+        docker-compose logs -f <container_name>
+    ```
