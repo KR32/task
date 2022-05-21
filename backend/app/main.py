@@ -12,10 +12,6 @@ Base.metadata.create_all(bind=engine)
 # TODO: move this into a separate file if more routers are added
 app.include_router(user_router, prefix="/api/v1")
 
-# origins = [
-#     "http://localhost:8080",
-# ]
-
 # CORS
 origins = []
 
@@ -32,14 +28,6 @@ if config.BACKEND_CORS_ORIGINS:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=origins,
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
 
 @app.middleware("http")
 async def db_session_middleware(request: Request, call_next):

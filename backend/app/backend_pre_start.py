@@ -11,5 +11,7 @@ while retry_count <= max_retry:
         print("Postgres is up!")
         break
     except Exception as e:
-        print("Sleep for 3 seconds to let db and running...")
+        print("Sleeping for 3 seconds and give time to let the db to start...")
+        retry_count += 1
         time.sleep(3)
+        
