@@ -21,6 +21,6 @@ services:
       - "traefik.http.routers.proxy.rule=(Host(`traefik.${DOMAIN}`) || Host(`traefik.proxy`))"
       - "traefik.http.routers.proxy.service=api@internal"
       - "traefik.http.routers.proxy.middlewares=auth"
-      - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$4.K4ku0s$$ix9uKfB1No73i0YKHpkWn/"
+      - "traefik.http.middlewares.auth.basicauth.users=admin:$$2y$$10$$hbPGGsLGXiYI/1k/.7c6cOnvaJPvZXELt5feas7sro/IqMT/AGOUu"
 
   
